@@ -1,0 +1,58 @@
+#!/usr/bin/env python
+# Kaiju MEM mode Snakemake
+
+import os
+import glob
+
+FILES = glob.glob('*.?.fastq.gz')
+
+#remove .fastq.gz from files to make handling easier
+extless_files = []
+FILES.sort()
+for file in FILES:
+    extless_files.append(file[:-9])
+
+#set forward & reverse read files, shouldn't matter if it doesn't match up completely
+R1 = extless_files[0]
+R2 = extless_files[1]
+
+#check reads are paired end by checking filenames are the same without .1 or .2 paired end information
+if (extless_files[0])[:-2] != (extless_files[1])[:-2]:
+    raise Exception("%s and %s don't appear to be paired end reads based on filename" % (R1,R2))
+
+#set overall filename R0 after checking that they match above
+R0 = (extless_files[0])[:-2]
+
+# Obtain First Three Letters to use for file handlingj (well, all before the first _ )
+FTL = R0.split('_')[0]
+
+# Set output directory
+outdir = '/gpfs/afm/cancergenetics/Abe/tool_comparison_output/Kaiju/mem/'
+
+# Set Kaiju database directory
+kaijudb = '~/scratch/kaijudb/kaiju_db_nr_euk.fmi'
+nodes = '~/scratch/kaijudb/nodes.dmp'
+
+rule all:
+    input: ("filesdone/%s" %FTL)
+
+rule move_stuff:
+    input: in1=("%s_mem_single.kaiju" %FTL), in2=("%s_mem_paired.kaiju" %FTL)
+    output: final=("filesdone/%s" %FTL)
+    threads: 1
+    params: cluster="-R 'rusage[mem=1000]' -M 1000 -o log", queue="short-ib"
+    shell: "mv {input.in1} {input.in2} {outdir}; touch {output.final}"
+
+rule greedy_single:
+    input: i3=("%s_bear_unmapped.0.fastq.gz" %FTL)
+    output: ("%s_mem_single.kaiju" %FTL)
+    threads: 16
+    params: cluster="-R 'rusage[mem=100000]' -M 100000 -o single_kaiju_greedy_log", queue="large-mem"
+    shell: 'kaiju -x -z 14 -t {nodes} -f {kaijudb} -m 11 -i {input.i3} -o {output}' 
+
+rule greedy_pair:
+    input: i1=("%s_bear_unmapped.1.fastq.gz" %FTL), i2=("%s_bear_unmapped.2.fastq.gz" %FTL)
+    output: ("%s_mem_paired.kaiju" %FTL)
+    threads: 16
+    params: cluster="-R 'rusage[mem=100000]' -M 100000 -o paired_kaiju_greedy_log", queue="large-mem"
+    shell: 'kaiju -x -z 14 -t {nodes} -f {kaijudb} -m 11 -i {input.i1} -j {input.i2} -o {output}'

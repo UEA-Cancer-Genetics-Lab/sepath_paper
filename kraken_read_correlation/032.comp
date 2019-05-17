@@ -1,0 +1,17 @@
+NCBI-TaxID	Kingdom	Phylum	Class	Order	Family	Genus	Species	Number_of_Reads	Relative_Abundance
+481	NA	Proteobacteria	Betaproteobacteria	Neisseriales	Neisseriaceae	NA	NA	132132	0
+1224	NA	Proteobacteria	NA	NA	NA	NA	NA	133824	0
+1653	NA	Actinobacteria	Actinobacteria	Corynebacteriales	Corynebacteriaceae	NA	NA	10740	0
+1716	NA	Actinobacteria	Actinobacteria	Corynebacteriales	Corynebacteriaceae	Corynebacterium	Corynebacterium_pseudogenitalium	2766	0
+1716	NA	Actinobacteria	Actinobacteria	Corynebacteriales	Corynebacteriaceae	Corynebacterium	NA	10168	0
+1760	NA	Actinobacteria	Actinobacteria	NA	NA	NA	NA	860622	0
+1760	NA	Actinobacteria	NA	NA	NA	NA	NA	860818	0
+2037	NA	Actinobacteria	Actinobacteria	Actinomycetales	NA	NA	NA	842820	0
+2049	NA	Actinobacteria	Actinobacteria	Actinomycetales	Actinomycetaceae	NA	NA	842820	0
+28216	NA	Proteobacteria	Betaproteobacteria	NA	NA	NA	NA	132660	0
+32257	NA	Proteobacteria	Betaproteobacteria	Neisseriales	Neisseriaceae	Kingella	Kingella_oralis	124291	0
+32257	NA	Proteobacteria	Betaproteobacteria	Neisseriales	Neisseriaceae	Kingella	NA	125237	0
+85007	NA	Actinobacteria	Actinobacteria	Corynebacteriales	NA	NA	NA	10787	0
+206351	NA	Proteobacteria	Betaproteobacteria	Neisseriales	NA	NA	NA	132223	0
+1653174	NA	Actinobacteria	Actinobacteria	Actinomycetales	Actinomycetaceae	Actinotignum	Actinotignum_schaalii	467796	0
+1653174	NA	Actinobacteria	Actinobacteria	Actinomycetales	Actinomycetaceae	Actinotignum	NA	839929	0

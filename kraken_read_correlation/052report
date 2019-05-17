@@ -1,0 +1,117 @@
+Analysing File: 052.compTrue COMP File: ../../true_comp/052.compPhylum	Proteobacteria	found in both lists - True Positive
+Phylum	Bacteroidetes	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Phylum	Actinobacteria	found in both lists - True Positive
+Phylum	Fusobacteria	found in both lists - True Positive
+Class	Epsilonproteobacteria	found in both lists - True Positive
+Class	Betaproteobacteria	found in both lists - True Positive
+Class	Gammaproteobacteria	found in both lists - True Positive
+Class	Bacteroidia	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Class	Bacilli	found in both lists - True Positive
+Class	Negativicutes	found in both lists - True Positive
+Class	Erysipelotrichia	found in both lists - True Positive
+Class	Tissierellia	found in both lists - True Positive
+Class	Fusobacteriia	found in both lists - True Positive
+Class	Clostridia	in input, but not found - False Positive
+Order	Campylobacterales	found in both lists - True Positive
+Order	Neisseriales	found in both lists - True Positive
+Order	Enterobacterales	found in both lists - True Positive
+Order	Pasteurellales	found in both lists - True Positive
+Order	Bacteroidales	found in both lists - True Positive
+Order	Micrococcales	found in both lists - True Positive
+Order	Lactobacillales	found in both lists - True Positive
+Order	Bacillales	found in both lists - True Positive
+Order	Corynebacteriales	found in both lists - True Positive
+Order	Actinomycetales	found in both lists - True Positive
+Order	Veillonellales	found in both lists - True Positive
+Order	Propionibacteriales	found in both lists - True Positive
+Order	Erysipelotrichales	found in both lists - True Positive
+Order	Tissierellales	found in both lists - True Positive
+Order	Fusobacteriales	found in both lists - True Positive
+Order	Clostridiales	in input, but not found - False Positive
+Order	Actinobacteria	in true list but not found - False Negative
+Family	Campylobacteraceae	found in both lists - True Positive
+Family	Helicobacteraceae	found in both lists - True Positive
+Family	Neisseriaceae	found in both lists - True Positive
+Family	Enterobacteriaceae	found in both lists - True Positive
+Family	Pasteurellaceae	found in both lists - True Positive
+Family	Prevotellaceae	found in both lists - True Positive
+Family	Micrococcaceae	found in both lists - True Positive
+Family	Streptococcaceae	found in both lists - True Positive
+Family	Enterococcaceae	found in both lists - True Positive
+Family	Listeriaceae	found in both lists - True Positive
+Family	Corynebacteriaceae	found in both lists - True Positive
+Family	Actinomycetaceae	found in both lists - True Positive
+Family	Veillonellaceae	found in both lists - True Positive
+Family	Propionibacteriaceae	found in both lists - True Positive
+Family	Erysipelotrichaceae	found in both lists - True Positive
+Family	Peptoniphilaceae	found in both lists - True Positive
+Family	Leptotrichiaceae	found in both lists - True Positive
+Family	Propionibacteriales	in true list but not found - False Negative
+Genus	Campylobacter	found in both lists - True Positive
+Genus	Helicobacter	found in both lists - True Positive
+Genus	Neisseria	found in both lists - True Positive
+Genus	Salmonella	found in both lists - True Positive
+Genus	Haemophilus	found in both lists - True Positive
+Genus	Pasteurella	found in both lists - True Positive
+Genus	Prevotella	found in both lists - True Positive
+Genus	Streptococcus	found in both lists - True Positive
+Genus	Enterococcus	found in both lists - True Positive
+Genus	Listeria	found in both lists - True Positive
+Genus	Actinomyces	found in both lists - True Positive
+Genus	Corynebacterium	found in both lists - True Positive
+Genus	Mobiluncus	found in both lists - True Positive
+Genus	Veillonella	found in both lists - True Positive
+Genus	Finegoldia	found in both lists - True Positive
+Genus	Peptoniphilus	found in both lists - True Positive
+Genus	Anaerococcus	found in both lists - True Positive
+Genus	Sneathia	found in both lists - True Positive
+Genus	Propionimicrobium	in input, but not found - False Positive
+Genus	Rothia	found in both lists - True Positive
+Genus	Kosakonia	in input, but not found - False Positive
+Genus	Erysipelatoclostridium	found in both lists - True Positive
+Genus	Actinotignum	found in both lists - True Positive
+Genus	Propionibacteriaceae	in true list but not found - False Negative
+Genus	Cutibacterium	in true list but not found - False Negative
+Species	Campylobacter ureolyticus	found in both lists - True Positive
+Species	Neisseria elongata	found in both lists - True Positive
+Species	Salmonella enterica	found in both lists - True Positive
+Species	Haemophilus influenzae	found in both lists - True Positive
+Species	Pasteurella dagmatis	found in both lists - True Positive
+Species	Enterococcus faecalis	found in both lists - True Positive
+Species	Listeria monocytogenes	found in both lists - True Positive
+Species	Actinomyces neuii	found in both lists - True Positive
+Species	Actinomyces turicensis	found in both lists - True Positive
+Species	Corynebacterium accolens	found in both lists - True Positive
+Species	Corynebacterium glucuronolyticum	found in both lists - True Positive
+Species	Corynebacterium pyruviciproducens	found in both lists - True Positive
+Species	Mobiluncus curtisii	found in both lists - True Positive
+Species	Veillonella parvula	found in both lists - True Positive
+Species	Finegoldia magna	found in both lists - True Positive
+Species	Peptoniphilus coxii	found in both lists - True Positive
+Species	Peptoniphilus duerdenii	found in both lists - True Positive
+Species	Anaerococcus prevotii	found in both lists - True Positive
+Species	Rothia dentocariosa	found in both lists - True Positive
+Species	Actinotignum urinale	found in both lists - True Positive
+Species	Campylobacter ureolyticus	in input, but not found from name or NCBI lookup - False Positive
+Species	Helicobacter pylori	in input, but not found from name or NCBI lookup - False Positive
+Species	Neisseria elongata	in input, but not found from name or NCBI lookup - False Positive
+Species	Salmonella enterica	in input, but not found from name or NCBI lookup - False Positive
+Species	Haemophilus influenzae	in input, but not found from name or NCBI lookup - False Positive
+Species	Pasteurella dagmatis	in input, but not found from name or NCBI lookup - False Positive
+Species	Prevotella corporis	in input, but not found from name or NCBI lookup - False Positive
+Species	Prevotella timonensis	in input, but not found from name or NCBI lookup - False Positive
+Species	Enterococcus faecalis	in input, but not found from name or NCBI lookup - False Positive
+Species	Listeria monocytogenes	in input, but not found from name or NCBI lookup - False Positive
+Species	Actinomyces neuii	in input, but not found from name or NCBI lookup - False Positive
+Species	Anaerococcus hydrogenalis	in true list but not found - False Negative
+Species	Peptoniphilus sp. BV3C26	in true list but not found - False Negative
+Species	Propionimicrobium sp. BV2F7	in true list but not found - False Negative
+Species	Cutibacterium acnes	in true list but not found - False Negative
+Species	Helicobacter Pylori	in true list but not found - False Negative
+Species	Clostridium spiroforme	in true list but not found - False Negative
+Species	Campylobacter rectus	in true list but not found - False Negative
+Species	Prevotella buccalis	in true list but not found - False Negative
+Species	Streptococcus thermophilus	in true list but not found - False Negative
+Species	Sneathia sanguinegens	in true list but not found - False Negative

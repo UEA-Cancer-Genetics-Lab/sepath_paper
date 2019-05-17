@@ -1,0 +1,76 @@
+Analysing File: 065.compTrue COMP File: ../../true_comp/065.compPhylum	Proteobacteria	found in both lists - True Positive
+Phylum	Bacteroidetes	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Phylum	Actinobacteria	found in both lists - True Positive
+Phylum	Tenericutes	found in both lists - True Positive
+Class	Epsilonproteobacteria	found in both lists - True Positive
+Class	Gammaproteobacteria	found in both lists - True Positive
+Class	Bacteroidia	found in both lists - True Positive
+Class	Bacilli	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Class	Mollicutes	found in both lists - True Positive
+Class	Clostridia	found in both lists - True Positive
+Class	Tissierellia	found in both lists - True Positive
+Order	Campylobacterales	found in both lists - True Positive
+Order	Pasteurellales	found in both lists - True Positive
+Order	Bacteroidales	found in both lists - True Positive
+Order	Lactobacillales	found in both lists - True Positive
+Order	Corynebacteriales	found in both lists - True Positive
+Order	Actinomycetales	found in both lists - True Positive
+Order	Mycoplasmatales	found in both lists - True Positive
+Order	Propionibacteriales	in input, but not found - False Positive
+Order	Clostridiales	found in both lists - True Positive
+Order	Tissierellales	found in both lists - True Positive
+Order	Actinobacteria	in true list but not found - False Negative
+Order	Micrococcales	in true list but not found - False Negative
+Family	Campylobacteraceae	found in both lists - True Positive
+Family	Pasteurellaceae	found in both lists - True Positive
+Family	Porphyromonadaceae	found in both lists - True Positive
+Family	Prevotellaceae	found in both lists - True Positive
+Family	Enterococcaceae	found in both lists - True Positive
+Family	Corynebacteriaceae	found in both lists - True Positive
+Family	Actinomycetaceae	found in both lists - True Positive
+Family	Mycoplasmataceae	found in both lists - True Positive
+Family	Propionibacteriaceae	in input, but not found - False Positive
+Family	Lachnospiraceae	found in both lists - True Positive
+Family	Peptoniphilaceae	found in both lists - True Positive
+Family	Propionibacteriales	in true list but not found - False Negative
+Family	Micrococcaceae	in true list but not found - False Negative
+Genus	Campylobacter	found in both lists - True Positive
+Genus	Haemophilus	found in both lists - True Positive
+Genus	Porphyromonas	found in both lists - True Positive
+Genus	Prevotella	found in both lists - True Positive
+Genus	Enterococcus	found in both lists - True Positive
+Genus	Corynebacterium	found in both lists - True Positive
+Genus	Ureaplasma	found in both lists - True Positive
+Genus	Catonella	found in both lists - True Positive
+Genus	Actinobaculum	found in both lists - True Positive
+Genus	Peptoniphilus	found in both lists - True Positive
+Genus	Anaerococcus	found in both lists - True Positive
+Genus	Propionimicrobium	in input, but not found - False Positive
+Genus	Actinotignum	found in both lists - True Positive
+Genus	Actinomyces	in true list but not found - False Negative
+Genus	Propionibacteriaceae	in true list but not found - False Negative
+Genus	Blautia	in true list but not found - False Negative
+Genus	Rothia	in true list but not found - False Negative
+Species	Campylobacter ureolyticus	found in both lists - True Positive
+Species	Haemophilus influenzae	found in both lists - True Positive
+Species	Prevotella disiens	found in both lists - True Positive
+Species	Enterococcus faecalis	found in both lists - True Positive
+Species	Corynebacterium pseudogenitalium	found in both lists - True Positive
+Species	Ureaplasma urealyticum	found in both lists - True Positive
+Species	Catonella morbi	found in both lists - True Positive
+Species	Actinobaculum massiliense	found in both lists - True Positive
+Species	Peptoniphilus coxii	found in both lists - True Positive
+Species	Anaerococcus lactolyticus	found in both lists - True Positive
+Species	Campylobacter ureolyticus	in input, but not found from name or NCBI lookup - False Positive
+Species	Haemophilus influenzae	in input, but not found from name or NCBI lookup - False Positive
+Species	Porphyromonas sp HMSC077F02	in input, but not found from name or NCBI lookup - False Positive
+Species	Corynebacterium glucuronolyticum	in true list but not found - False Negative
+Species	Peptoniphilus harei	in true list but not found - False Negative
+Species	Actinomyces neuii	in true list but not found - False Negative
+Species	Porphyromonas somerae	in true list but not found - False Negative
+Species	Propionimicrobium sp. BV2F7	in true list but not found - False Negative
+Species	Actinobaculum schaalii	in true list but not found - False Negative
+Species	Blautia hansenii	in true list but not found - False Negative
+Species	Rothia dentocariosa	in true list but not found - False Negative

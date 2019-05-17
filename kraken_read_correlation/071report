@@ -1,0 +1,63 @@
+Analysing File: 071.compTrue COMP File: ../../true_comp/071.compPhylum	Spirochaetes	in input, but not found - False Positive
+Phylum	Proteobacteria	found in both lists - True Positive
+Phylum	Bacteroidetes	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Class	Spirochaetia	in input, but not found - False Positive
+Class	Epsilonproteobacteria	found in both lists - True Positive
+Class	Gammaproteobacteria	found in both lists - True Positive
+Class	Bacteroidia	found in both lists - True Positive
+Class	Bacilli	found in both lists - True Positive
+Class	Clostridia	in input, but not found - False Positive
+Class	Erysipelotrichia	in input, but not found - False Positive
+Class	Tissierellia	found in both lists - True Positive
+Order	Spirochaetales	in input, but not found - False Positive
+Order	Campylobacterales	found in both lists - True Positive
+Order	Pasteurellales	found in both lists - True Positive
+Order	Bacteroidales	found in both lists - True Positive
+Order	Lactobacillales	in input, but not found - False Positive
+Order	Bacillales	found in both lists - True Positive
+Order	Clostridiales	in input, but not found - False Positive
+Order	Erysipelotrichales	in input, but not found - False Positive
+Order	Tissierellales	found in both lists - True Positive
+Family	Spirochaetaceae	in input, but not found - False Positive
+Family	Campylobacteraceae	found in both lists - True Positive
+Family	Pasteurellaceae	found in both lists - True Positive
+Family	Prevotellaceae	found in both lists - True Positive
+Family	Streptococcaceae	in input, but not found - False Positive
+Family	Enterococcaceae	in input, but not found - False Positive
+Family	Lachnospiraceae	in input, but not found - False Positive
+Family	Peptostreptococcaceae	in input, but not found - False Positive
+Family	Erysipelotrichaceae	in input, but not found - False Positive
+Family	Peptoniphilaceae	found in both lists - True Positive
+Family	Bacillales Family XI. Incertae Sedis	in true list but not found - False Negative
+Genus	Treponema	in input, but not found - False Positive
+Genus	Campylobacter	found in both lists - True Positive
+Genus	Prevotella	found in both lists - True Positive
+Genus	Streptococcus	in input, but not found - False Positive
+Genus	Enterococcus	in input, but not found - False Positive
+Genus	Gemella	found in both lists - True Positive
+Genus	Johnsonella	in input, but not found - False Positive
+Genus	Filifactor	in input, but not found - False Positive
+Genus	Mannheimia	found in both lists - True Positive
+Genus	Solobacterium	in input, but not found - False Positive
+Genus	Peptoniphilus	in input, but not found - False Positive
+Genus	Anaerococcus	found in both lists - True Positive
+Species	Prevotella corporis	found in both lists - True Positive
+Species	Prevotella timonensis	found in both lists - True Positive
+Species	Gemella haemolysans	found in both lists - True Positive
+Species	Mannheimia haemolytica	found in both lists - True Positive
+Species	Anaerococcus lactolyticus	found in both lists - True Positive
+Species	Anaerococcus prevotii	found in both lists - True Positive
+Species	Campylobacter gracilis	in input, but not found from name or NCBI lookup - False Positive
+Species	Campylobacter sp 10 1 50	in input, but not found from name or NCBI lookup - False Positive
+Species	Prevotella corporis	in input, but not found from name or NCBI lookup - False Positive
+Species	Prevotella timonensis	in input, but not found from name or NCBI lookup - False Positive
+Species	Streptococcus mitis	in input, but not found from name or NCBI lookup - False Positive
+Species	Streptococcus pneumoniae	in input, but not found from name or NCBI lookup - False Positive
+Species	Streptococcus sp HMSC063B03	in input, but not found from name or NCBI lookup - False Positive
+Species	Enterococcus faecalis	in input, but not found from name or NCBI lookup - False Positive
+Species	Gemella haemolysans	in input, but not found from name or NCBI lookup - False Positive
+Species	Johnsonella ignava	in input, but not found from name or NCBI lookup - False Positive
+Species	Filifactor alocis	in input, but not found from name or NCBI lookup - False Positive
+Species	Mannheimia haemolytica	in input, but not found from name or NCBI lookup - False Positive
+Species	Campylobacter rectus	in true list but not found - False Negative

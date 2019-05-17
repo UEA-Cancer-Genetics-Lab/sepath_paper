@@ -1,0 +1,34 @@
+Analysing File: 096.compTrue COMP File: ../../true_comp/096.compPhylum	Proteobacteria	found in both lists - True Positive
+Phylum	Bacteroidetes	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Phylum	Tenericutes	in true list but not found - False Negative
+Class	Gammaproteobacteria	found in both lists - True Positive
+Class	Bacteroidia	found in both lists - True Positive
+Class	Bacilli	found in both lists - True Positive
+Class	Clostridia	found in both lists - True Positive
+Class	Erysipelotrichia	in true list but not found - False Negative
+Class	Mollicutes	in true list but not found - False Negative
+Order	Pasteurellales	found in both lists - True Positive
+Order	Bacteroidales	found in both lists - True Positive
+Order	Lactobacillales	found in both lists - True Positive
+Order	Clostridiales	found in both lists - True Positive
+Order	Erysipelotrichales	in true list but not found - False Negative
+Order	Mycoplasmatales	in true list but not found - False Negative
+Family	Pasteurellaceae	found in both lists - True Positive
+Family	Bacteroidaceae	found in both lists - True Positive
+Family	Streptococcaceae	found in both lists - True Positive
+Family	Lachnospiraceae	found in both lists - True Positive
+Family	Erysipelotrichaceae	in true list but not found - False Negative
+Family	Mycoplasmataceae	in true list but not found - False Negative
+Genus	Pasteurella	found in both lists - True Positive
+Genus	Bacteroides	found in both lists - True Positive
+Genus	Streptococcus	found in both lists - True Positive
+Genus	Blautia	found in both lists - True Positive
+Genus	Bulleidia	in true list but not found - False Negative
+Genus	Mycoplasma	in true list but not found - False Negative
+Species	Pasteurella dagmatis	found in both lists - True Positive
+Species	Bacteroides fragilis	found in both lists - True Positive
+Species	Streptococcus thermophilus	found in both lists - True Positive
+Species	Blautia hansenii	found in both lists - True Positive
+Species	Bulleidia extructa	in true list but not found - False Negative
+Species	Mycoplasma genitalium	in true list but not found - False Negative

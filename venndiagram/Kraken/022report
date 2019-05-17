@@ -1,0 +1,29 @@
+Analysing File: 022_4thresh.compTrue COMP File: ../True/022.compPhylum	Actinobacteria	found in both lists - True Positive
+Phylum	Proteobacteria	found in both lists - True Positive
+Phylum	Bacteroidetes	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Class	Bacteroidia	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Class	Gammaproteobacteria	found in both lists - True Positive
+Class	Bacilli	found in both lists - True Positive
+Order	Propionibacteriales	found in both lists - True Positive
+Order	Bacteroidales	found in both lists - True Positive
+Order	Lactobacillales	found in both lists - True Positive
+Order	Bacillales	found in both lists - True Positive
+Order	Pseudomonadales	found in both lists - True Positive
+Family	Prevotellaceae	found in both lists - True Positive
+Family	Moraxellaceae	found in both lists - True Positive
+Family	Propionibacteriaceae	found in both lists - True Positive
+Family	Streptococcaceae	found in both lists - True Positive
+Family	Bacillales Family XI. Incertae Sedis	in true list but not found - False Negative
+Genus	Prevotella	found in both lists - True Positive
+Genus	Moraxella	found in both lists - True Positive
+Genus	Streptococcus	found in both lists - True Positive
+Genus	Gemella	found in both lists - True Positive
+Genus	Cutibacterium	in true list but not found - False Negative
+Species	Streptococcus agalactiae	found in both lists - True Positive
+Species	Gemella haemolysans	found in both lists - True Positive
+Species	Streptococcus anginosus	found in both lists - True Positive
+Species	Prevotella bivia	found in both lists - True Positive
+Species	Moraxella catarrhalis	found in both lists - True Positive
+Species	Cutibacterium acnes	in true list but not found - False Negative

@@ -1,0 +1,14 @@
+#sample of kontaminant human depletion
+
+#kontaminant standard command:
+bsub -q large-mem -M 200000 -R "rusage[mem=200000]" -J kontaminant "kontaminant -f -n 25 -b 120 -t 1 -l 0 -1 001_R1.fq -2 001_R2.fq -k 31 -o 001 -p . -d ~/data/GRCh38/decoys/new_kontaminant_database -c KONTAMINANT"
+
+#Generating kontaminant database with:
+bsub -q long-ib -M 60000 -R "rusage[mem=60000]" -J kontaminant_db "kontaminant --index -1 /gpfs/home/znb17pxu/data/GRCh38/decoys/new_kontaminant_database/GRCh38_full_analysis_set_plus_decoy_hla.fa -o kontaminant_db -k 31 -g FASTA -o kontaminant_db -b 120 -n 25 mem=68000"
+
+#Then move it
+mv ~/data/GRCh38/decoys/new_kontaminant_database/GRCh38_full_analysis_set_plus_decoy_hla.fa.31.kmers /gpfs/home/znb17pxu/data/GRCh38/decoys/new_kontaminant_database/KONTAMINANT.fasta.31.kmers
+
+
+# human genome with decoys can be downloaded using:
+#wget ftp://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/reference/GRCh38_reference_genome/GRCh38_full_analysis_set_plus_decoy_hla.fa

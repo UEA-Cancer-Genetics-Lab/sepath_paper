@@ -1,0 +1,80 @@
+kraken on raw reads, read threshold100 (100 filt)
+unfiltered
+200
+500
+metaspades & kraken 100_filt
+unfilt
+250 filt
+coverage filtering: minimum coverage = 1
+1.5
+1.25
+default coverage filter
+metaphlan unfiltered
+200 filt
+500 filt
+diamond (with metaspades) unfiltered no read threshold
+unfiltered contig length 4 filt
+unfiltered contig length 100 filt
+unfiltered contig length 200 filt
+unfiltered contig length 500 filt
+minimum contig length 100 unfiltered
+4 filt
+100 filt
+200 filt
+500 filt 
+minimum contig length 250 unfiltered
+4 filt
+100 filt
+200 filt
+500 filt
+Kaiju GREEDY mode unfiltered
+100 filt
+200 filt
+500 filt
+KAIJU MEM mode unfiltered
+100 filt
+200 filt
+500 filt
+KrakeknUniq on contigs unfiltered
+3 reads 3 minimum kmers 0.0003 covergae
+5 reads 5 unique kmers 0.0005 covergae
+10 reads 10 unique kmers 0.001 covergae
+25 reads 50 kmers 0.0025 coverage
+50 reads 50 unique kmers 0.005 minimum coverage
+100 reads 100 unique kmers 0.01 coverage
+gottcha unfiltered
+megahit assembly + Kraken (with prune=2 parmaeter)
+megahit assembly + kraken (with prune=6 parameter)
+megahit assembly + kraken (with prune=10 parameter)
+megahit assembly + metaphlan (with prune=2)
+megahit assembly + metaphlan (with prune =6)
+megahit assembly + metaphlan (with prune=10)
+Centrifuge unfiltered
+centrifuge 100 filt
+centrifuge 150 filt
+centrifuge 200 filt
+motus2 unfiltered at genus level
+motus2 unfiltered at species level
+pathseq unfiltered
+pathseq >0 filtered
+pathseq >1 filtered
+classification intersection: motus and spades/kraken with 4 contig threshold
+classification union: motus and spades/kraken with 4 contig threshold
+consensus classification: single tools (pathseq, motus and kraken on contigs) + whole consensus combination
+consensus kraken + motus
+consensus kraken + pathseq
+consensus pathseq + motus
+human depletion - bbduk default parameters
+bwa
+bwa + bbduk
+kontaminant
+BBDuk parameter optimisation: mcf 0.5
+MCF 0.75
+mcf 0.9
+MKF 0.5
+MKF 0.75
+MKF 0.9
+MCF 0.5 with human reference + cosmic cancer database
+viral classifications (various datasets either 50k reads per viral sepcies or 10k)-  kraken on assembled contigs
+kraken on raw reads
+Pathseq on a single viral dataset to investigate how that performs

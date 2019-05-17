@@ -1,0 +1,44 @@
+Analysing File: 010.compTrue COMP File: ../../true_comp/010.compPhylum	Proteobacteria	found in both lists - True Positive
+Phylum	Bacteroidetes	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Phylum	Actinobacteria	found in both lists - True Positive
+Phylum	Tenericutes	found in both lists - True Positive
+Phylum	Fusobacteria	found in both lists - True Positive
+Class	Gammaproteobacteria	found in both lists - True Positive
+Class	Bacteroidia	found in both lists - True Positive
+Class	Bacilli	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Class	Mollicutes	found in both lists - True Positive
+Class	Fusobacteriia	found in both lists - True Positive
+Order	Enterobacterales	found in both lists - True Positive
+Order	Bacteroidales	found in both lists - True Positive
+Order	Bacillales	found in both lists - True Positive
+Order	Corynebacteriales	found in both lists - True Positive
+Order	Actinomycetales	found in both lists - True Positive
+Order	Mycoplasmatales	found in both lists - True Positive
+Order	Fusobacteriales	found in both lists - True Positive
+Family	Enterobacteriaceae	found in both lists - True Positive
+Family	Prevotellaceae	found in both lists - True Positive
+Family	Staphylococcaceae	found in both lists - True Positive
+Family	Corynebacteriaceae	found in both lists - True Positive
+Family	Actinomycetaceae	found in both lists - True Positive
+Family	Mycoplasmataceae	found in both lists - True Positive
+Family	Leptotrichiaceae	found in both lists - True Positive
+Genus	Escherichia	found in both lists - True Positive
+Genus	Salmonella	in input, but not found - False Positive
+Genus	Prevotella	found in both lists - True Positive
+Genus	Staphylococcus	found in both lists - True Positive
+Genus	Corynebacterium	found in both lists - True Positive
+Genus	Ureaplasma	found in both lists - True Positive
+Genus	Leptotrichia	found in both lists - True Positive
+Genus	Varibaculum	found in both lists - True Positive
+Genus	Kosakonia	in input, but not found - False Positive
+Species	Escherichia coli	found in both lists - True Positive
+Species	Prevotella bivia	found in both lists - True Positive
+Species	Staphylococcus epidermidis	found in both lists - True Positive
+Species	Corynebacterium glucuronolyticum	found in both lists - True Positive
+Species	Ureaplasma urealyticum	found in both lists - True Positive
+Species	Leptotrichia goodfellowii	found in both lists - True Positive
+Species	Varibaculum cambriense	found in both lists - True Positive
+Species	Escherichia coli	in input, but not found from name or NCBI lookup - False Positive
+Species	Salmonella enterica	in input, but not found from name or NCBI lookup - False Positive

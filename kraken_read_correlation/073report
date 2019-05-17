@@ -1,0 +1,34 @@
+Analysing File: 073.compTrue COMP File: ../../true_comp/073.compPhylum	Proteobacteria	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Phylum	Actinobacteria	found in both lists - True Positive
+Class	Epsilonproteobacteria	found in both lists - True Positive
+Class	Bacilli	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Class	Clostridia	found in both lists - True Positive
+Order	Campylobacterales	found in both lists - True Positive
+Order	Lactobacillales	in input, but not found - False Positive
+Order	Bacillales	found in both lists - True Positive
+Order	Corynebacteriales	found in both lists - True Positive
+Order	Clostridiales	found in both lists - True Positive
+Family	Campylobacteraceae	found in both lists - True Positive
+Family	Helicobacteraceae	found in both lists - True Positive
+Family	Streptococcaceae	in input, but not found - False Positive
+Family	Corynebacteriaceae	found in both lists - True Positive
+Family	Lachnospiraceae	found in both lists - True Positive
+Family	Bacillales Family XI. Incertae Sedis	in true list but not found - False Negative
+Genus	Campylobacter	found in both lists - True Positive
+Genus	Helicobacter	found in both lists - True Positive
+Genus	Streptococcus	in input, but not found - False Positive
+Genus	Gemella	found in both lists - True Positive
+Genus	Corynebacterium	found in both lists - True Positive
+Genus	Blautia	found in both lists - True Positive
+Species	Gemella haemolysans	found in both lists - True Positive
+Species	Corynebacterium glucuronolyticum	found in both lists - True Positive
+Species	Blautia hansenii	found in both lists - True Positive
+Species	Helicobacter pylori	in input, but not found from name or NCBI lookup - False Positive
+Species	Streptococcus mitis	in input, but not found from name or NCBI lookup - False Positive
+Species	Streptococcus pneumoniae	in input, but not found from name or NCBI lookup - False Positive
+Species	Streptococcus sp HMSC063B03	in input, but not found from name or NCBI lookup - False Positive
+Species	Gemella haemolysans	in input, but not found from name or NCBI lookup - False Positive
+Species	Helicobacter Pylori	in true list but not found - False Negative
+Species	Campylobacter rectus	in true list but not found - False Negative

@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+#this simple pipeline was written to carry out metaphlan analysis on assembled contigs
+import os
+import glob
+
+FILES=glob.glob('data/*_contigs.fasta')
+
+samples = []
+for f in FILES:
+    samples.append((f.split('/')[1])[0:3])
+samples.sort()
+#print(samples)
+
+rule all:
+    input: expand('output/{A}_contig.comp', A=samples)
+
+rule single_comp:
+    input: "output/{number}.mph"
+    output: "output/{number}.comp"
+    threads: 1
+    params: cluster="-R 'rusage[mem=8000]' -M 8000", queue="short-eth"
+    shell: "cat {input} | cut -f 1,5 | grep -v ^# > single.txt; python ~/bin/kraken-2-comp2.py single.txt; mv single.txt {output}"
+
+rule mph_those_contigs:
+    input: "data/{number}s.fasta"
+    output: single_bz="extra_files/{number}.bz", single_mph="output/{number}.mph"
+    threads: 6
+    params: cluster="-R 'rusage[mem=200000]' -M 200000", queue="huge-memory"
+    shell: 'module remove python/anaconda/4.2/3.5; metaphlan2.py --input_type fasta --nproc 6 --min_alignment_len 20 --bowtie2out {output.single_bz} --bt2_ps very-sensitive -t rel_ab_w_read_stats {input} > {output.single_mph}'

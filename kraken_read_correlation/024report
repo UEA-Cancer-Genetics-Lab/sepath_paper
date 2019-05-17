@@ -1,0 +1,29 @@
+Analysing File: 024.compTrue COMP File: ../../true_comp/024.compPhylum	Proteobacteria	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Phylum	Actinobacteria	found in both lists - True Positive
+Class	Epsilonproteobacteria	found in both lists - True Positive
+Class	Gammaproteobacteria	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Class	Clostridia	found in both lists - True Positive
+Order	Campylobacterales	found in both lists - True Positive
+Order	Enterobacterales	found in both lists - True Positive
+Order	Pasteurellales	found in both lists - True Positive
+Order	Actinomycetales	found in both lists - True Positive
+Order	Clostridiales	found in both lists - True Positive
+Family	Campylobacteraceae	found in both lists - True Positive
+Family	Enterobacteriaceae	found in both lists - True Positive
+Family	Pasteurellaceae	found in both lists - True Positive
+Family	Actinomycetaceae	found in both lists - True Positive
+Family	Lachnospiraceae	found in both lists - True Positive
+Genus	Campylobacter	found in both lists - True Positive
+Genus	Salmonella	found in both lists - True Positive
+Genus	Actinomyces	found in both lists - True Positive
+Genus	Mannheimia	found in both lists - True Positive
+Genus	Blautia	found in both lists - True Positive
+Genus	Kosakonia	in input, but not found - False Positive
+Species	Campylobacter ureolyticus	found in both lists - True Positive
+Species	Salmonella enterica	found in both lists - True Positive
+Species	Actinomyces neuii	found in both lists - True Positive
+Species	Mannheimia haemolytica	found in both lists - True Positive
+Species	Blautia hansenii	found in both lists - True Positive
+Species	Campylobacter ureolyticus	in input, but not found from name or NCBI lookup - False Positive

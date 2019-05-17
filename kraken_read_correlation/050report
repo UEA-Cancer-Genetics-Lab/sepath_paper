@@ -1,0 +1,65 @@
+Analysing File: 050.compTrue COMP File: ../../true_comp/050.compPhylum	Proteobacteria	found in both lists - True Positive
+Phylum	Bacteroidetes	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Phylum	Actinobacteria	found in both lists - True Positive
+Class	Epsilonproteobacteria	found in both lists - True Positive
+Class	Betaproteobacteria	found in both lists - True Positive
+Class	Gammaproteobacteria	found in both lists - True Positive
+Class	Bacteroidia	found in both lists - True Positive
+Class	Bacilli	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Class	Tissierellia	found in both lists - True Positive
+Class	Clostridia	found in both lists - True Positive
+Class	Erysipelotrichia	in true list but not found - False Negative
+Order	Campylobacterales	found in both lists - True Positive
+Order	Neisseriales	found in both lists - True Positive
+Order	Pasteurellales	found in both lists - True Positive
+Order	Bacteroidales	found in both lists - True Positive
+Order	Lactobacillales	found in both lists - True Positive
+Order	Bacillales	found in both lists - True Positive
+Order	Actinomycetales	found in both lists - True Positive
+Order	Tissierellales	found in both lists - True Positive
+Order	Clostridiales	found in both lists - True Positive
+Order	Erysipelotrichales	in true list but not found - False Negative
+Family	Campylobacteraceae	found in both lists - True Positive
+Family	Neisseriaceae	found in both lists - True Positive
+Family	Pasteurellaceae	found in both lists - True Positive
+Family	Prevotellaceae	found in both lists - True Positive
+Family	Streptococcaceae	found in both lists - True Positive
+Family	Enterococcaceae	found in both lists - True Positive
+Family	Actinomycetaceae	found in both lists - True Positive
+Family	Aerococcaceae	found in both lists - True Positive
+Family	Peptoniphilaceae	found in both lists - True Positive
+Family	Ruminococcaceae	found in both lists - True Positive
+Family	Bacillales Family XI. Incertae Sedis	in true list but not found - False Negative
+Family	Erysipelotrichaceae	in true list but not found - False Negative
+Genus	Campylobacter	found in both lists - True Positive
+Genus	Neisseria	found in both lists - True Positive
+Genus	Prevotella	found in both lists - True Positive
+Genus	Streptococcus	found in both lists - True Positive
+Genus	Enterococcus	found in both lists - True Positive
+Genus	Gemella	found in both lists - True Positive
+Genus	Actinomyces	found in both lists - True Positive
+Genus	Mobiluncus	in input, but not found - False Positive
+Genus	Abiotrophia	found in both lists - True Positive
+Genus	Mannheimia	found in both lists - True Positive
+Genus	Peptoniphilus	found in both lists - True Positive
+Genus	Varibaculum	found in both lists - True Positive
+Genus	Faecalibacterium	found in both lists - True Positive
+Genus	Bulleidia	in true list but not found - False Negative
+Species	Neisseria elongata	found in both lists - True Positive
+Species	Prevotella bivia	found in both lists - True Positive
+Species	Streptococcus mitis	found in both lists - True Positive
+Species	Streptococcus parasanguinis	found in both lists - True Positive
+Species	Streptococcus thermophilus	found in both lists - True Positive
+Species	Enterococcus faecalis	found in both lists - True Positive
+Species	Gemella haemolysans	found in both lists - True Positive
+Species	Actinomyces neuii	found in both lists - True Positive
+Species	Abiotrophia defectiva	found in both lists - True Positive
+Species	Mannheimia haemolytica	found in both lists - True Positive
+Species	Peptoniphilus duerdenii	found in both lists - True Positive
+Species	Varibaculum cambriense	found in both lists - True Positive
+Species	Faecalibacterium prausnitzii	found in both lists - True Positive
+Species	Neisseria elongata	in input, but not found from name or NCBI lookup - False Positive
+Species	Campylobacter rectus	in true list but not found - False Negative
+Species	Bulleidia extructa	in true list but not found - False Negative

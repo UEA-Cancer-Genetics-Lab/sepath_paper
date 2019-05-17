@@ -1,0 +1,51 @@
+NCBI_taxID	k_mer_counts	taxa
+0	163	NA
+1123263	41	Solobacterium moorei
+NCBI_taxID	k_mer_counts	taxa
+1123263	45	Solobacterium moorei
+0	150	NA
+2	2	bacteria
+NCBI_taxID	k_mer_counts	taxa
+1239	2	Firmicutes
+0	200	NA
+102148	44	Solobacterium moorei
+1123263	27	Solobacterium moorei
+706433	69	Solobacterium moorei
+NCBI_taxID	k_mer_counts	taxa
+411465	57	Parvimonas micra
+1239	18	Firmicutes
+0	112	NA
+NCBI_taxID	k_mer_counts	taxa
+1239	4	Firmicutes
+679200	53	Johnsonella ignava
+0	126	NA
+NCBI_taxID	k_mer_counts	taxa
+1760	26	Actinobacteria
+1739413	44	Alloscardovia sp HMSC034E08
+887326	4	Mobiluncus curtisii ATCC 51333
+0	107	NA
+NCBI_taxID	k_mer_counts	taxa
+411460	110	Ruminococcus torques
+0	174	NA
+186803	13	Lachnospiraceae
+186802	19	Clostridiales
+NCBI_taxID	k_mer_counts	taxa
+411465	69	Parvimonas micra
+0	110	NA
+NCBI_taxID	k_mer_counts	taxa
+497725	18	Kosakonia oryzae
+0	27	NA
+NCBI_taxID	k_mer_counts	taxa
+0	22	NA
+1930	12	Streptomyces scabiei
+NCBI_taxID	k_mer_counts	taxa
+39498	154	Eubacterium yurii
+1239	85	Firmicutes
+0	376	NA
+NCBI_taxID	k_mer_counts	taxa
+0	448	NA
+1123263	140	Solobacterium moorei
+NCBI_taxID	k_mer_counts	taxa
+0	320	NA
+1239	111	Firmicutes
+679200	112	Johnsonella ignava

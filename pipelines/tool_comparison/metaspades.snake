@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+# metaspades Snakemake
+
+import os
+import glob
+
+FILES = glob.glob('*.?.fastq.gz')
+
+#remove .fastq.gz from files to make handling easier
+extless_files = []
+FILES.sort()
+for file in FILES:
+    extless_files.append(file[:-9])
+
+#set forward & reverse read files, shouldn't matter if it doesn't match up completely
+R1 = extless_files[0]
+R2 = extless_files[1]
+
+#check reads are paired end by checking filenames are the same without .1 or .2 paired end information
+if (extless_files[0])[:-2] != (extless_files[1])[:-2]:
+    raise Exception("%s and %s don't appear to be paired end reads based on filename" % (R1,R2))
+
+#set overall filename R0 after checking that they match above
+R0 = (extless_files[0])[:-2]
+
+# Obtain First Three Letters to use for file handlingj (well, all before the first _ )
+FTL = R0.split('_')[0]
+
+# Set output directory
+outdir = '/gpfs/afm/cancergenetics/Abe/tool_comparison_output/metaspades/'
+
+# Set Kraken database directory
+krakendb = '/gpfs/data/datasets/kraken/'
+
+rule all:
+    input: ("filesdone/%s" %FTL)
+
+rule move_and_touch:
+    input: ("%s_spades.comp" %FTL)
+    output: ("filesdone/%s" %FTL)
+    threads: 4
+    params: cluster="-R 'rusage[mem=10000]' -M 10000 -o log", queue="short-ib"
+    shell: "mv {input} {FTL} {outdir}; touch {output}"
+
+rule kraken_to_comp:
+    input: ("%s_spades.txt" %FTL)
+    output: ("%s_spades.comp" %FTL)
+    threads: 4
+    params: cluster="-R 'rusage[mem=10000]' -M 10000 -o log", queue="short-ib"
+    shell: "python ~/bin/kraken-2-comp2.py {input}"
+
+rule mpa_report:
+    input: ("%s_threshold.kraken")
+    output: temp("%s_spades.txt" %FTL)
+    threads: 4
+    params: cluster="-R 'rusage[mem=10000]' -M 10000 -o log", queue="short-ib"
+    shell: 'kraken-mpa-report --db {krakendb} {input} > {output}'
+
+rule Thresh_single:
+    input: temp("%s.kraken" %FTL)
+    output: temp("%s_threshold.kraken")
+    threads: 4
+    params: cluster="-R 'rusage[mem=10000]' -M 10000 -o log", queue="short-ib"
+    shell: 'kraken-filter --db {krakendb} --threshold 0.2 {input} > {output}'
+
+rule contig_kraken:
+    input: ("%s/%s_contigs.fasta" %(FTL, FTL))
+    output: temp("%s.kraken" %FTL)
+    threads: 14
+    params: cluster="-R 'rusage[mem=300000]' -M 300000 -o kraken_spades_log", queue="large-mem"
+    shell: 'module add python/anaconda/4.2/3.5; /gpfs/software/kraken/0.10.6/kraken --preload --db {krakendb} --threads 10 --fasta-input {input} --output {output}'
+
+rule spades_assembly:
+    input: i1=("%s_bear_unmapped.1.fastq.gz" %FTL), i2=("%s_bear_unmapped.2.fastq.gz" %FTL)
+    output: ("%s/%s_contigs.fasta" %(FTL, FTL))
+    threads: 40
+    params: cluster="-R 'rusage[mem=60000]' -M 60000 -o Assembly_log", queue="long-ib"
+    shell: "module add spades/3.11.1; module remove python/anaconda/4.2/3.5; python /gpfs/software/spades/3.11.1/bin/metaspades.py -1 {input.i1} -2 {input.i2} -o {FTL}/; mv {FTL}/contigs.fasta {output}" #mkdir {FTL}

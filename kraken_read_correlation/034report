@@ -1,0 +1,26 @@
+Analysing File: 034.compTrue COMP File: ../../true_comp/034.compPhylum	Bacteroidetes	found in both lists - True Positive
+Phylum	Actinobacteria	found in both lists - True Positive
+Phylum	Tenericutes	found in both lists - True Positive
+Class	Bacteroidia	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Class	Mollicutes	found in both lists - True Positive
+Order	Bacteroidales	found in both lists - True Positive
+Order	Actinomycetales	found in both lists - True Positive
+Order	Mycoplasmatales	found in both lists - True Positive
+Order	Propionibacteriales	in input, but not found - False Positive
+Order	Actinobacteria	in true list but not found - False Negative
+Family	Bacteroidaceae	found in both lists - True Positive
+Family	Actinomycetaceae	found in both lists - True Positive
+Family	Mycoplasmataceae	found in both lists - True Positive
+Family	Propionibacteriaceae	in input, but not found - False Positive
+Family	Propionibacteriales	in true list but not found - False Negative
+Genus	Bacteroides	found in both lists - True Positive
+Genus	Mycoplasma	found in both lists - True Positive
+Genus	Actinobaculum	found in both lists - True Positive
+Genus	Propionimicrobium	in input, but not found - False Positive
+Genus	Propionibacteriaceae	in true list but not found - False Negative
+Species	Bacteroides fragilis	found in both lists - True Positive
+Species	Mycoplasma genitalium	found in both lists - True Positive
+Species	Actinobaculum massiliense	found in both lists - True Positive
+Species	Bacteroides fragilis	in input, but not found from name or NCBI lookup - False Positive
+Species	Propionimicrobium sp. BV2F7	in true list but not found - False Negative

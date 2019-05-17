@@ -1,0 +1,229 @@
+# This script will obtain reads unmapped to the human genome and produce a seperate fastq file, there must be a single pair of genomes in the current directory
+
+import glob
+import os
+import gzip
+import sys
+import subprocess
+
+#obtain list of files - will only support format X.1.fastq.gz/ X.2.fastq.gz to denote read pairs
+FILES = glob.glob('*.?.fastq.gz')
+bwa_index = "~/data/bwa-index/GRCh38_full_analysis_set_plus_decoy_hla.fasta"
+host_file = '/gpfs/home/znb17pxu/data/GRCh38/cancer/GRCh38_Cancer_genes.fa'
+cancergenetics = '/gpfs/afm/cancergenetics/Abe/metagenomes_pcawg/unmapped/mcf/cancer_filtered'
+
+#remove .fastq.gz from files to make handling easier
+extless_files = []
+FILES.sort()
+for file in FILES:
+    extless_files.append(file[:-9])
+
+#below checks seem to keep changing 
+#if len(FILES) != 2:
+#    raise Exception("%s fastq.gz files in current working directory, there should be 2" %(len(FILES)))
+
+#set forward & reverse read files, shouldn't matter if it doesn't match up completely
+R1 = extless_files[0]
+R2 = extless_files[1]
+
+#check reads are paired end by checking filenames are the same without .1 or .2 paired end information
+if (extless_files[0])[:-2] != (extless_files[1])[:-2]:
+    raise Exception("%s and %s don't appear to be paired end reads based on filename" % (R1,R2))
+
+#set overall filename R0 after checking that they match above
+R0 = (extless_files[0])[:-2]
+oro_file = R0.split('_')[0]
+
+#obtain number of reads for files:
+#readlen1 = (str(subprocess.check_output("zcat %s | awk '{s++} END {print s/4}'" %FILES[0], shell=True))[2:-3])
+#readlen2 = (str(subprocess.check_output("zcat %s | awk '{s++} END {print s/4}'" %FILES[1], shell=True))[2:-3])
+#total_read_len = (int(readlen1)) + (int(readlen2))
+#print("Total number of reads to process in both paired end files: %s" %total_read_len)
+
+rule all:
+    input: done=("filesdone/%s" %oro_file)#("%s%s_unmapped.1.fastq.gz" %(cancergenetics, R0)), ("%s%s_unmapped.2.fastq.gz" %(cancergenetics, R0)), ("%s%s_unmapped.0.fastq.gz" %(cancergenetics, R0)), ("filesdone/%s" %R0) #("%s_unmapped.1.fastq.gz" % R0), ("%s_unmapped.2.fastq.gz" % R0), ("%s_unmapped.0.fastq.gz" % R0)#("%s_unmapped.fastq.gz" % R0) #("%s_unmapped.bam" % R0) #temp("%s_paired.fastq.gz" %R1), temp("%s_unpaired.fastq.gz" %R1), temp("%s_paired.fastq.gz" %R2), temp("%s_unpaired.fastq.gz" %R2)#    input: temp("{R1}_paired.fastq.gz"), temp("{R1}_unpaired.fastq.gz"), temp("{R2}_paired.fastq.gz"), temp("{R2}_unpaired.fastq.gz")
+
+rule mv_gzipped:
+    input: ("%s_unmapped.1.fastq.gz" % R0), ("%s_unmapped.2.fastq.gz" % R0), ("%s_unmapped.0.fastq.gz" % R0), ("%s_unmapped.0.2.fastq.gz" %R0)
+    output: done=("filesdone/%s" %oro_file)
+    threads: 1
+    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-ib"
+    shell: "mv {input} {cancergenetics}; rm -f *fastq.gz*; touch {output.done}"
+
+rule gzip_unmapped_fastq:
+    input: ("%s_unmapped.1.fastq" % R0), ("%s_unmapped.2.fastq" % R0), ("%s_unmapped.0.fastq" %R0), ("%s_unmapped.0.2.fastq" %R0) #original=([file for file in FILES])
+    output: ("%s_unmapped.1.fastq.gz" % R0), ("%s_unmapped.2.fastq.gz" % R0), ("%s_unmapped.0.fastq.gz" % R0), ("%s_unmapped.0.2.fastq.gz" %R0)
+    threads: 16
+    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-ib"
+    shell: "gzip {input}"#; rm -f modulesadded {input.original}"
+
+rule Paired_Human_depletion:
+    input: inR1=("%s_paired.fastq.gz" %R1), inR2=("%s_paired.fastq.gz" %R2)
+    output: outR1=("%s_unmapped.1.fastq" %R0), outR2=("%s_unmapped.2.fastq" %R0), outR3=("%s_unmapped.0.2.fastq" %R0)
+    threads: 16
+    params: cluster="-R 'rusage[mem=250000]' -M 250000", queue="large-mem"
+    shell: "module add bbmap/37.28 java; bbduk.sh in1={input.inR1} in2={input.inR2} out1={output.outR1} out2={output.outR2} outs={output.outR3} k=30 -Xmx230g ref={host_file} mcf=0.5"
+
+rule Single_Human_depletion:
+    input: in1=("%s_unpaired.fastq.gz" %R2), in2=("%s_unpaired.fastq.gz" %R1) 
+    output: temp("%s_unmapped.0.fastq" %R0)
+    threads: 16
+    params: cluster="-R 'rusage[mem=250000]' -M 250000", queue="large-mem"
+    shell: "cat {input.in1} >> {input.in2}; module add bbmap/37.28 java; bbduk.sh in1={input.in2} out={output} k=30 -Xmx230g ref={host_file} mcf=0.5"
+
+rule Quality_Trimming:
+    input: [file for file in FILES]
+    output: temp("%s_paired.fastq.gz" %R1), temp("%s_unpaired.fastq.gz" %R1), temp("%s_paired.fastq.gz" %R2), temp("%s_unpaired.fastq.gz" %R2)
+    threads: 15
+    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-ib"
+    shell: "source ~/bin/dependencies; source ~/path-maker; java -jar /gpfs/software/Trimmomatic-0.36/trimmomatic-0.36.jar PE -threads 15 {input} {output} SLIDINGWINDOW:4:15 MINLEN:35"
+
+
+#    shell: "source ~/bin/dependencies; source ~/path-maker; java -jar /gpfs/software/Trimmomatic-0.36/trimmomatic-0.36.jar PE {R1}.fastq.gz {R2}.fastq.gz {R1}_paired.fastq.gz {R1}_unpaired.fastq.gz {R2}_paired.fastq.gz {R2}_unpaired.fastq.gz SLIDINGWINDOW:4:15 MINLEN:35"
+# retrieve read length form fastq.gz file using awk - maybe turn into a job if files are large and more memory required or use biopython script in bin (slower)
+#readlen.1 = (str(subprocess.check_output("awk '{s++} END {print s/4}' %s" %file, shell=True))[2:-3])
+#
+#file_read_length = (str(subprocess.check_output("zcat %s | awk '{s++} END {print s/4}'" %FILES[0], shell=True))[2:-3])
+#print("working file: %s" %FILES[0])
+#print("total reads: %s" %file_read_length)
+#
+#best parameters for kraken filtering q=0.2 ----- add into pipeline 
+#		Read thresholding = total input reads / something -- look at previous notes to define read threshold
+#
+#rule all:
+#    input: "modulesadded", [(os.path.basename(file)[:3]) + "_trimmed.fastq" for file in FILES], [(os.path.basename(file)[:3]) + "_trimmed.sam" for file in FILES], ([(os.path.basename(file)[:3]) + "unmapped.sam" for file in FILES]), ([(os.path.basename(file)[:3]) + "unmapped.fastq" for file in FILES]), ([(os.path.basename(file)[:3]) + ".kraken" for file in FILES]), ([(os.path.basename(file)[:3]) + ".kraken_mpa_report" for file in FILES]), ([(os.path.basename(file)[:3]) + ".kraken_mpa_report.comp" for file in FILES]), (["metaphlan/" + (os.path.basename(file)[:3]) + "vs_.metaphlan" for file in FILES]), (["metaphlan/sorted" + (os.path.basename(file)[:3]) + "vs_.metaphlan" for file in FILES]), (["metaphlan/sorted" + (os.path.basename(file)[:3]) + "vs_.metaphlan.comp" for file in FILES]), "comp_performance.R", "mphperformance", ([(os.path.basename(file)[:3]) + ".kraken.comp" for file in FILES]), "krakenperformance"
+#    # [os.path.basename(file)[:-3] for file in FILES]
+#    # "metaphlan"
+#    # (["metaphlan/" + (os.path.basename(file)[:3]) + "s_.metaphlan" for file in FILES])  -- removed from sensitive metaphlan
+#    # (["metaphlan/sorted" + (os.path.basename(file)[:3]) + "s_.metaphlan" for file in FILES]) -- removed form sort_sensitive metaphlan
+#
+#
+#rule kraken_performance:
+#    input: ([(os.path.basename(file)[:3]) + ".kraken.comp" for file in FILES])
+#    output: "krakenperformance"
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=4000]' -M 4000", queue="short-eth"
+#    shell: 'Rscript comp_performance.R {input} humanless_with_abundances.comp; echo " " > ./krakenperformance; echo "Date Finished:" >> time.txt; date >> time.txt;'
+#
+#rule kraken_threshold:
+#    input: ([(os.path.basename(file)[:3]) + ".kraken_mpa_report.comp" for file in FILES])
+#    output: ([(os.path.basename(file)[:3]) + ".kraken.comp" for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=4000]' -M 4000", queue="short-eth"
+#    shell: "cat {input} | awk -F '\t' '$9>10000 {{print ;}}' > {output}" 
+#
+#rule metaphlan_performance:
+#    input: (["metaphlan/sorted" + (os.path.basename(file)[:3]) + "vs_.metaphlan.comp" for file in FILES])
+#    output: "mphperformance"
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=4000]' -M 4000", queue="short-eth"
+#    shell: 'Rscript comp_performance.R {input} humanless_with_abundances.comp; echo " " > ./mphperformance'
+#
+#rule copy_performance_script:
+#    output: "comp_performance.R"
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=4000]' -M 4000", queue="short-eth"
+#    shell: "cp ~/bin/comp_performance.R ./"
+#
+#rule metaphlan_to_comp:
+#    input: (["metaphlan/sorted" + (os.path.basename(file)[:3]) + "vs_.metaphlan" for file in FILES])
+#    output: (["metaphlan/sorted" + (os.path.basename(file)[:3]) + "vs_.metaphlan.comp" for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-eth"
+#    shell: "python ~/bin/kraken-2-comp2.py {input}"
+#
+#rule sort_very_sensitive_metaphlan2:
+#    input: (["metaphlan/" + (os.path.basename(file)[:3]) + "vs_.metaphlan" for file in FILES])
+#    output: (["metaphlan/sorted" + (os.path.basename(file)[:3]) + "vs_.metaphlan" for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=4000]' -M 4000", queue="short-eth"
+#    shell: 'cat {input} | grep "k__" | cut -f 1,5 > {output}'
+#
+#rule very_sensitive_metaphlan2:
+#    input: ([(os.path.basename(file)[:3]) + "unmapped.fastq" for file in FILES])
+#    output: (["metaphlan/" + (os.path.basename(file)[:3]) + "vs_.metaphlan" for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-eth"
+#    shell: 'metaphlan2.py {input} --input_type fastq --bowtie2out metaphlan/vs.bowtie2.bz --bt2_ps very-sensitive -t rel_ab_w_read_stats > {output}'
+#
+#rule sort_sensitive_metaphlan2:
+#    input: (["metaphlan/" + (os.path.basename(file)[:3]) + "s_.metaphlan" for file in FILES])
+#    output: (["metaphlan/sorted" + (os.path.basename(file)[:3]) + "s_.metaphlan" for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=4000]' -M 4000", queue="short-eth"
+#    shell: 'cat {input} | grep "k__" | cut -f 1,5 > {output}' 
+#
+#rule sensitive_metaphlan2:
+#    input: ([(os.path.basename(file)[:3]) + "unmapped.fastq" for file in FILES])
+#    output: (["metaphlan/" + (os.path.basename(file)[:3]) + "s_.metaphlan" for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-eth"
+#    shell: 'metaphlan2.py {input} --input_type fastq --bowtie2out metaphlan/vs.bowtie2.bz --bt2_ps sensitive -t rel_ab_w_read_stats > {output}'
+#
+#rule makemetaphlandir:
+#    output: "metaphlan"
+#    threads: 1
+#    params: cluster=" -R 'rusage[mem=1000]' -M 1000", queue="short-eth"
+#    shell: "mkdir metaphlan"
+#
+#rule kraken_to_comp:
+#    input: ([(os.path.basename(file)[:3]) + ".kraken_mpa_report" for file in FILES])
+#    output: ([(os.path.basename(file)[:3]) + ".kraken_mpa_report.comp" for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-eth"
+#    shell: "python ~/bin/kraken-2-comp2.py {input}" 
+#
+#rule kraken_mpa_report:
+#    input: ([(os.path.basename(file)[:3]) + ".kraken" for file in FILES])
+#    output: ([(os.path.basename(file)[:3]) + ".kraken_mpa_report" for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-eth"
+#    shell: "kraken-mpa-report --db ~/../../gpfs/data/datasets/kraken {input}>{output}"
+#
+#rule unleash_the_kraken:
+#    input:([(os.path.basename(file)[:3]) + "unmapped.fastq" for file in FILES])
+#    output: ([(os.path.basename(file)[:3]) + ".kraken" for file in FILES])
+#    threads: 20
+#    params: cluster="-R 'rusage[mem=300000]' -M 300000", queue="huge-mem"
+#    shell: '/gpfs/software/kraken/0.10.6/kraken --preload --db ~/../../data/datasets/kraken/ --fastq-input {input} --output {output}' 
+#
+#rule obtain_unmapped_fastq:
+#    input: ([(os.path.basename(file)[:3]) + "unmapped.sam" for file in FILES])
+#    output: ([(os.path.basename(file)[:3]) + "unmapped.fastq" for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-eth"
+#    shell: "java -jar /gpfs/software/picard/2.10.9/picard.jar SamToFastq I={input} F={output}"
+#
+#rule retrieve_unmapped_reads:
+#    input: ([(os.path.basename(file)[:3]) + "_trimmed.sam" for file in FILES])
+#    output: ([(os.path.basename(file)[:3]) + "unmapped.sam" for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-eth"
+#    shell: "samtools view -f 4 {input} > {output}"
+#
+#rule bwa_mem_human:
+#    input: [(os.path.basename(file)[:3]) + "_trimmed.fastq" for file in FILES]
+#    output: protected([(os.path.basename(file)[:3]) + "_trimmed.sam" for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-eth"
+#    shell: "bwa mem ~/data/bwa-index/GRCh38_full_analysis_set_plus_decoy_hla.fasta {input} > {output}"
+#
+#rule Trimmer:
+#    input: protected([file for file in FILES]) #[(os.path.basename(file)[:-3]) for file in FILES]
+#    output: [(os.path.basename(file)[:3]) + "_trimmed.fastq" for file in FILES]
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-eth"
+#    shell: "echo 'beginning {input} trimming'; java -jar /gpfs/software/Trimmomatic-0.36/trimmomatic-0.36.jar SE {input} {output} SLIDINGWINDOW:4:10 MINLEN:32"
+#
+#rule dependencies:
+#    output: "modulesadded"
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=1000]' -M 1000", queue="short-eth"
+#    shell: "echo 'Date Started: ' > time.txt; date >> time.txt; echo 'Loading Dependencies...';source ~/bin/dependencies"
+#
+#rule gunzip:
+#    input: protected([file for file in FILES])
+#    output: protected([(os.path.basename(file)[:-3]) for file in FILES])
+#    threads: 1
+#    params: cluster="-R 'rusage[mem=10000]' -M 10000", queue="short-eth"
+#    shell: "echo 'performing the gunzip of {input}'; gunzip -c {input} > {output}"

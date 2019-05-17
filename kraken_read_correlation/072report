@@ -1,0 +1,30 @@
+Analysing File: 072.compTrue COMP File: ../../true_comp/072.compPhylum	Proteobacteria	found in both lists - True Positive
+Phylum	Fusobacteria	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Phylum	Actinobacteria	found in both lists - True Positive
+Class	Epsilonproteobacteria	found in both lists - True Positive
+Class	Fusobacteriia	found in both lists - True Positive
+Class	Bacilli	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Order	Campylobacterales	found in both lists - True Positive
+Order	Fusobacteriales	found in both lists - True Positive
+Order	Lactobacillales	found in both lists - True Positive
+Order	Corynebacteriales	found in both lists - True Positive
+Family	Campylobacteraceae	found in both lists - True Positive
+Family	Fusobacteriaceae	found in both lists - True Positive
+Family	Streptococcaceae	found in both lists - True Positive
+Family	Enterococcaceae	found in both lists - True Positive
+Family	Corynebacteriaceae	found in both lists - True Positive
+Family	Leptotrichiaceae	in true list but not found - False Negative
+Genus	Campylobacter	found in both lists - True Positive
+Genus	Fusobacterium	found in both lists - True Positive
+Genus	Streptococcus	found in both lists - True Positive
+Genus	Enterococcus	found in both lists - True Positive
+Genus	Corynebacterium	found in both lists - True Positive
+Genus	Sneathia	in true list but not found - False Negative
+Species	Campylobacter ureolyticus	found in both lists - True Positive
+Species	Fusobacterium nucleatum	found in both lists - True Positive
+Species	Streptococcus thermophilus	found in both lists - True Positive
+Species	Enterococcus faecalis	found in both lists - True Positive
+Species	Corynebacterium pyruviciproducens	found in both lists - True Positive
+Species	Sneathia sanguinegens	in true list but not found - False Negative

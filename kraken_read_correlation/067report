@@ -1,0 +1,93 @@
+Analysing File: 067.compTrue COMP File: ../../true_comp/067.compPhylum	Proteobacteria	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Phylum	Actinobacteria	found in both lists - True Positive
+Class	Betaproteobacteria	found in both lists - True Positive
+Class	Gammaproteobacteria	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Class	Bacilli	found in both lists - True Positive
+Class	Negativicutes	found in both lists - True Positive
+Class	Clostridia	found in both lists - True Positive
+Class	Erysipelotrichia	found in both lists - True Positive
+Class	Tissierellia	found in both lists - True Positive
+Order	Neisseriales	found in both lists - True Positive
+Order	Pasteurellales	found in both lists - True Positive
+Order	Micrococcales	found in both lists - True Positive
+Order	Bacillales	found in both lists - True Positive
+Order	Lactobacillales	found in both lists - True Positive
+Order	Corynebacteriales	found in both lists - True Positive
+Order	Actinomycetales	found in both lists - True Positive
+Order	Propionibacteriales	found in both lists - True Positive
+Order	Veillonellales	found in both lists - True Positive
+Order	Clostridiales	found in both lists - True Positive
+Order	Erysipelotrichales	found in both lists - True Positive
+Order	Tissierellales	found in both lists - True Positive
+Family	Neisseriaceae	found in both lists - True Positive
+Family	Pasteurellaceae	found in both lists - True Positive
+Family	Micrococcaceae	found in both lists - True Positive
+Family	Staphylococcaceae	found in both lists - True Positive
+Family	Streptococcaceae	found in both lists - True Positive
+Family	Corynebacteriaceae	found in both lists - True Positive
+Family	Actinomycetaceae	found in both lists - True Positive
+Family	Propionibacteriaceae	found in both lists - True Positive
+Family	Veillonellaceae	found in both lists - True Positive
+Family	Lachnospiraceae	found in both lists - True Positive
+Family	Erysipelotrichaceae	found in both lists - True Positive
+Family	Peptoniphilaceae	found in both lists - True Positive
+Family	Clostridiales_Family_XIII_Incertae_Sedis	in input, but not found - False Positive
+Family	Peptostreptococcaceae	in input, but not found - False Positive
+Family	Ruminococcaceae	in true list but not found - False Negative
+Family	Bacillales Family XI. Incertae Sedis	in true list but not found - False Negative
+Genus	Neisseria	found in both lists - True Positive
+Genus	Pasteurella	found in both lists - True Positive
+Genus	Staphylococcus	found in both lists - True Positive
+Genus	Streptococcus	found in both lists - True Positive
+Genus	Gemella	found in both lists - True Positive
+Genus	Corynebacterium	found in both lists - True Positive
+Genus	Dialister	found in both lists - True Positive
+Genus	Johnsonella	in input, but not found - False Positive
+Genus	Catonella	found in both lists - True Positive
+Genus	Solobacterium	in input, but not found - False Positive
+Genus	Peptoniphilus	found in both lists - True Positive
+Genus	Anaerococcus	found in both lists - True Positive
+Genus	Propionimicrobium	found in both lists - True Positive
+Genus	Rothia	found in both lists - True Positive
+Genus	Blautia	found in both lists - True Positive
+Genus	Kandleria	in input, but not found - False Positive
+Genus	Actinotignum	found in both lists - True Positive
+Genus	Peptoanaerobacter	in input, but not found - False Positive
+Genus	Cutibacterium	in true list but not found - False Negative
+Genus	Ruminococcus	in true list but not found - False Negative
+Genus	Bulleidia	in true list but not found - False Negative
+Genus	Mobiluncus	in true list but not found - False Negative
+Species	Neisseria mucosa	found in both lists - True Positive
+Species	Pasteurella dagmatis	found in both lists - True Positive
+Species	Streptococcus parasanguinis	found in both lists - True Positive
+Species	Gemella haemolysans	found in both lists - True Positive
+Species	Corynebacterium accolens	found in both lists - True Positive
+Species	Corynebacterium pyruviciproducens	found in both lists - True Positive
+Species	Dialister invisus	found in both lists - True Positive
+Species	Catonella morbi	found in both lists - True Positive
+Species	Peptoniphilus harei	found in both lists - True Positive
+Species	Anaerococcus prevotii	found in both lists - True Positive
+Species	Propionimicrobium lymphophilum	found in both lists - True Positive
+Species	Rothia dentocariosa	found in both lists - True Positive
+Species	Blautia hansenii	found in both lists - True Positive
+Species	Actinotignum urinale	found in both lists - True Positive
+Species	Neisseria mucosa	in input, but not found from name or NCBI lookup - False Positive
+Species	Pasteurella dagmatis	in input, but not found from name or NCBI lookup - False Positive
+Species	Streptococcus parasanguinis	in input, but not found from name or NCBI lookup - False Positive
+Species	Gemella haemolysans	in input, but not found from name or NCBI lookup - False Positive
+Species	Corynebacterium accolens	in input, but not found from name or NCBI lookup - False Positive
+Species	Corynebacterium aurimucosum	in input, but not found from name or NCBI lookup - False Positive
+Species	Corynebacterium pseudogenitalium	in input, but not found from name or NCBI lookup - False Positive
+Species	Corynebacterium pyruviciproducens	in input, but not found from name or NCBI lookup - False Positive
+Species	Dialister invisus	in input, but not found from name or NCBI lookup - False Positive
+Species	Johnsonella ignava	in input, but not found from name or NCBI lookup - False Positive
+Species	Catonella morbi	in input, but not found from name or NCBI lookup - False Positive
+Species	Staphylococcus epidermidis	in true list but not found - False Negative
+Species	Cutibacterium acnes	in true list but not found - False Negative
+Species	Ruminococcus torques	in true list but not found - False Negative
+Species	Corynebacterium tuberculostearicum	in true list but not found - False Negative
+Species	Bulleidia extructa	in true list but not found - False Negative
+Species	Mobiluncus curtisii	in true list but not found - False Negative
+Species	Staphylococcus aureus	in true list but not found - False Negative

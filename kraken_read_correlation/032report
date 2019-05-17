@@ -1,0 +1,18 @@
+Analysing File: 032.compTrue COMP File: ../../true_comp/032.compPhylum	Proteobacteria	found in both lists - True Positive
+Phylum	Actinobacteria	found in both lists - True Positive
+Class	Betaproteobacteria	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Order	Neisseriales	found in both lists - True Positive
+Order	Corynebacteriales	found in both lists - True Positive
+Order	Actinomycetales	found in both lists - True Positive
+Family	Neisseriaceae	found in both lists - True Positive
+Family	Corynebacteriaceae	found in both lists - True Positive
+Family	Actinomycetaceae	found in both lists - True Positive
+Genus	Corynebacterium	found in both lists - True Positive
+Genus	Kingella	found in both lists - True Positive
+Genus	Actinotignum	found in both lists - True Positive
+Species	Kingella oralis	found in both lists - True Positive
+Species	Corynebacterium pseudogenitalium	in input, but not found from name or NCBI lookup - False Positive
+Species	Kingella oralis	in input, but not found from name or NCBI lookup - False Positive
+Species	Actinobaculum schaalii	in true list but not found - False Negative
+Species	Corynebacterium tuberculostearicum	in true list but not found - False Negative

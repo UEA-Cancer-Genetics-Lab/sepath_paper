@@ -1,0 +1,82 @@
+#!/usr/bin/env python
+# Metaphlan Snakemake
+
+import os
+import glob
+
+FILES = glob.glob('*.?.fastq.gz')
+
+#remove .fastq.gz from files to make handling easier
+extless_files = []
+FILES.sort()
+for file in FILES:
+    extless_files.append(file[:-9])
+
+#set forward & reverse read files, shouldn't matter if it doesn't match up completely
+R1 = extless_files[0]
+R2 = extless_files[1]
+
+#check reads are paired end by checking filenames are the same without .1 or .2 paired end information
+if (extless_files[0])[:-2] != (extless_files[1])[:-2]:
+    raise Exception("%s and %s don't appear to be paired end reads based on filename" % (R1,R2))
+
+#set overall filename R0 after checking that they match above
+R0 = (extless_files[0])[:-2]
+
+# Obtain First Three Letters to use for file handlingj (well, all before the first _ )
+FTL = R0.split('_')[0]
+
+# Set output directory
+outdir = '/gpfs/afm/cancergenetics/Abe/tool_comparison_output/metaphlan/'
+
+rule all:
+    input: ("filesdone/%s" %FTL)
+
+rule final_touch:
+    input: ("%s_mph.comp" %FTL), ("%s_single.bz" %FTL), ("%s_paired.bz" %FTL),
+    output: final=("filesdone/%s" %FTL)
+    threads: 1
+    params: cluster="-R 'rusage[mem=100]' -M 100", queue="short-eth"
+    shell: "mv {input} {outdir}; touch {output.final}"
+    
+rule merge_comp:
+    input: p=("paired.comp"), s=("single.comp")
+    output: ("%s_mph.comp" %FTL)
+    threads: 2
+    params: cluster="-R 'rusage[mem=8000]' -M 8000", queue="short-eth"
+    shell: "module add R/3.5.0/gcc-mellanox; Rscript ../bin/merge_comp.R {input.p} {input.s} {output}"
+
+rule single_comp:
+    input: ("%s_single.mph" %FTL)
+    output: temp("single.txt"), temp("single.comp")
+    threads: 2
+    params: cluster="-R 'rusage[mem=8000]' -M 8000", queue="short-eth"
+    shell: "cat {input} | cut -f 1,5 | grep -v ^# > single.txt; python ../bin/kraken-2-comp2.py single.txt"
+
+rule paired_comp:
+    input: ("%s_paired.mph" %FTL)
+    output: temp("paired.txt"), temp("paired.comp")
+    threads: 2
+    params: cluster="-R 'rusage[mem=8000]' -M 8000", queue="short-eth"
+    shell: "cat {input} | cut -f 1,5 | grep -v ^# > paired.txt; python ../bin/kraken-2-comp2.py paired.txt"
+
+rule single_mph:
+    input: ("%s_bear_unmapped.0.fastq" %FTL)
+    output: single_bz=("%s_single.bz" %FTL), single_mph=temp("%s_single.mph" %FTL)
+    threads: 5
+    params: cluster="-R 'rusage[mem=20000]' -M 20000", queue="short-ib"
+    shell: 'metaphlan2.py {input} --nproc 5 --min_alignment_len 20 --input_type fastq --bowtie2out {output.single_bz} --bt2_ps very-sensitive -t rel_ab_w_read_stats > {output.single_mph}'
+
+rule paired_mph:
+    input: in1=("%s_bear_unmapped.1.fastq" %FTL), in2=("%s_bear_unmapped.2.fastq" %FTL), 
+    output: pair_bz=("%s_paired.bz" %FTL), pair_mph=temp("%s_paired.mph" %FTL)
+    threads: 5
+    params: cluster="-R 'rusage[mem=20000]' -M 20000", queue="short-ib"
+    shell: 'metaphlan2.py {input.in1},{input.in2} --nproc 5 --min_alignment_len 20 --input_type fastq --bowtie2out {output.pair_bz} --bt2_ps very-sensitive -t rel_ab_w_read_stats > {output.pair_mph}'
+
+rule mph_gun:
+    input: i1=("%s_bear_unmapped.1.fastq.gz" %FTL), i2=("%s_bear_unmapped.2.fastq.gz" %FTL), i3=("%s_bear_unmapped.0.fastq.gz" %FTL)
+    output: o1=temp("%s_bear_unmapped.1.fastq" %FTL), o2=temp("%s_bear_unmapped.2.fastq" %FTL), o3=temp("%s_bear_unmapped.0.fastq" %FTL)
+    threads: 5
+    params: cluster="-R 'rusage[mem=1000]' -M 1000", queue="short-ib"
+    shell: "gunzip -c {input.i1} > {output.o1} && gunzip -c {input.i2} > {output.o2} && gunzip -c {input.i3} > {output.o3}"

@@ -1,0 +1,7 @@
+rcomp mkf and mcf contain files from bbduk filtering parameters. 
+
+rcomp - rcomp set to false in bbduk - meanining that only the forward read is searched for a match
+
+mkf - minimum kmer fraction = 0.5 meaning that 50% of kmers have to match before a removal
+
+mcf -  minimum covered fraction --- in terms of bases, so 50% of bases must match a reference kmer, this is to avoid one mis match of kmer meaning lots of kmers don't match

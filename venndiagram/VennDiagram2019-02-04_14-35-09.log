@@ -1,0 +1,12 @@
+INFO [2019-02-04 14:35:09] [[1]]
+INFO [2019-02-04 14:35:09] list(Kraken = "Kraken", motus = "mOTUS2", pathseq = "PathSeq")
+INFO [2019-02-04 14:35:09] 
+INFO [2019-02-04 14:35:09] $fill
+INFO [2019-02-04 14:35:09] c("chartreuse4", "darkgoldenrod2", "tomato")
+INFO [2019-02-04 14:35:09] 
+INFO [2019-02-04 14:35:09] $alpha
+INFO [2019-02-04 14:35:09] c(0.5, 0.5, 0.5)
+INFO [2019-02-04 14:35:09] 
+INFO [2019-02-04 14:35:09] $filename
+INFO [2019-02-04 14:35:09] NULL
+INFO [2019-02-04 14:35:09] 

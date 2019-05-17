@@ -1,0 +1,45 @@
+Analysing File: 059.compTrue COMP File: ../../true_comp/059.compPhylum	Spirochaetes	found in both lists - True Positive
+Phylum	Proteobacteria	found in both lists - True Positive
+Phylum	Bacteroidetes	found in both lists - True Positive
+Phylum	Firmicutes	found in both lists - True Positive
+Phylum	Actinobacteria	found in both lists - True Positive
+Class	Spirochaetia	found in both lists - True Positive
+Class	Betaproteobacteria	found in both lists - True Positive
+Class	Bacteroidia	found in both lists - True Positive
+Class	Bacilli	found in both lists - True Positive
+Class	Actinobacteria	found in both lists - True Positive
+Class	Erysipelotrichia	found in both lists - True Positive
+Class	Tissierellia	found in both lists - True Positive
+Order	Spirochaetales	found in both lists - True Positive
+Order	Neisseriales	found in both lists - True Positive
+Order	Bacteroidales	found in both lists - True Positive
+Order	Lactobacillales	found in both lists - True Positive
+Order	Corynebacteriales	found in both lists - True Positive
+Order	Actinomycetales	found in both lists - True Positive
+Order	Erysipelotrichales	found in both lists - True Positive
+Order	Tissierellales	found in both lists - True Positive
+Family	Spirochaetaceae	found in both lists - True Positive
+Family	Neisseriaceae	found in both lists - True Positive
+Family	Prevotellaceae	found in both lists - True Positive
+Family	Streptococcaceae	found in both lists - True Positive
+Family	Corynebacteriaceae	found in both lists - True Positive
+Family	Actinomycetaceae	found in both lists - True Positive
+Family	Erysipelotrichaceae	found in both lists - True Positive
+Family	Peptoniphilaceae	found in both lists - True Positive
+Genus	Treponema	found in both lists - True Positive
+Genus	Prevotella	found in both lists - True Positive
+Genus	Streptococcus	found in both lists - True Positive
+Genus	Actinomyces	found in both lists - True Positive
+Genus	Corynebacterium	found in both lists - True Positive
+Genus	Kingella	found in both lists - True Positive
+Genus	Anaerococcus	found in both lists - True Positive
+Genus	Erysipelatoclostridium	found in both lists - True Positive
+Species	Treponema vincentii	found in both lists - True Positive
+Species	Prevotella timonensis	found in both lists - True Positive
+Species	Streptococcus anginosus	found in both lists - True Positive
+Species	Actinomyces turicensis	found in both lists - True Positive
+Species	Corynebacterium pyruviciproducens	found in both lists - True Positive
+Species	Kingella oralis	found in both lists - True Positive
+Species	Anaerococcus lactolyticus	found in both lists - True Positive
+Species	Treponema vincentii	in input, but not found from name or NCBI lookup - False Positive
+Species	Clostridium spiroforme	in true list but not found - False Negative
