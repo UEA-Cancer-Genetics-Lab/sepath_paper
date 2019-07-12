@@ -1,0 +1,77 @@
+#!/usr/bin/env python
+import os
+import glob
+import sys
+import re
+
+#dependencies to load prior
+#module add python/anaconda/4.2/3.5 java bbmap/37.28 kraken/0.10.6 mothur/1.38.1/gcc
+
+# Useful command to launch snake from CLI
+# bsub -J icgc_snek -q long-eth -M 10000 -R "rusage[mem=10000]" "snakemake -s icgc.snake --cluster \"bsub -q {params.queue} {params.cluster}\" --jobs 6 --latency-wait 99999 --timestamp --keep-going"
+#dryrun
+#snakemake --dryrun -s icgc.snake --cluster "bsub -q {params.queue} {params.cluster}" --jobs 20 --latency-wait 99999 --timestamp --keep-going
+
+#set location of useful files
+krakendb = "/gpfs/data/datasets/kraken/"
+bbduk_db = "~/data/GRCh38/cancer/bbduk_db.fa"
+
+#load files and do some editing to form output file list
+FILES = glob.glob("data/filter/*.bz2")
+FILEZ = [os.path.basename(file) for file in FILES]
+kraken_files = ["results/%s" %(re.sub('.filter.fastq.bz2', '.kraken_mpa_report', file) ) for file in FILEZ]
+motus_files= ["results/%s" %(re.sub('.filter.fastq.bz2', '_genus.motus', file) ) for file in FILEZ]
+files= kraken_files + motus_files
+
+#define the rule all based on above
+rule all:
+    input: [file for file in files]
+
+rule kraken_report:
+    input: kraken_report="results/{sample_id}.kraken_report"
+    output: mpa_report = "results/{sample_id}.kraken_mpa_report"
+    priority: 60
+    params: cluster="-R 'rusage[mem=10000]' -M 10000 -o report.log -e report.err", queue="mellanox-ib"
+    threads: 4
+    shell: "kraken-report --db {krakendb} {input} > {output}"
+
+rule contain_kraken:
+    input: krak="results/{sample_id}.kraken"
+    output: rep=temp("results/{sample_id}.kraken_report")
+    priority: 50
+    params: cluster="-R 'rusage[mem=10000]' -M 10000 -o krak_thresh.log -e krak_thresh.err", queue="mellanox-ib"
+    threads: 5
+    shell: 'kraken-filter --db {krakendb} --threshold 0.2 {input.krak} > {output.rep}'
+
+rule unleash_kraken:
+    input: kraken_in="temp/{sample_id}.humanless.fastq"
+    output: kraken_out=temp("results/{sample_id}.kraken")
+    priority: 30
+    params: cluster="-R 'rusage[mem=300000]' -M 300000 -o kraken.log -e kraken.err", queue="huge-memory"
+    threads: 12
+    shell: "/gpfs/software/kraken/0.10.6/kraken --preload --db {krakendb} --threads 10 --fastq-input {input.kraken_in} --output {output.kraken_out}"
+
+rule motus:
+    input: motus_in="temp/{sample_id}.humanless.fastq"
+    output: motus_genus_rep="results/{sample_id}_genus.motus", motus_genus_bam="results/{sample_id}_genus.bam", motus_species_rep="results/{sample_id}_species.motus", motus_species_bam="results/{sample_id}_species.bam"
+    priority: 20
+    params: cluster="-R 'rusage[mem=20000]' -M 20000 -o motus.log -e motus.err", queue="mellanox-ib"
+    threads: 5
+    shell: "motus profile -g 2 -l 50 -s {input.motus_in} -t 3 -k genus -o {output.motus_genus_rep} -I {output.motus_genus_bam}; motus -g 2 -l 50 profile -s {input.motus_in} -t 5 -o {output.motus_species_rep} -I {output.motus_species_bam}; touch {output.motus_species_rep} {output.motus_species_bam} {output.motus_genus_rep} {output.motus_genus_bam}"
+
+rule destroy_all_humans:
+    input: humans=("temp/{sample_id}.filter.fastq")
+    output: humanless=temp("temp/{sample_id}.humanless.fastq")#temp
+    priority: 2
+    params: cluster="-R 'rusage[mem=200000]' -M 200000 -o human_depletion.log -e human_depletion.err", queue="huge-memory"
+    threads: 10
+    shell: "bbduk.sh in1={input.humans} out={output.humanless} k=30 -Xmx230g ref={bbduk_db} mcf=0.5"
+
+rule decompress:
+    input: bz="data/filter/{sample_id}.filter.fastq.bz2"
+    output: bzless=temp("temp/{sample_id}.filter.fastq")#temp
+    priority: 1
+    params: cluster="-R 'rusage[mem=10000]' -M 10000 -o decompress.log -e decompress.err", queue="mellanox-ib"
+    threads: 1
+    shell: "bzip2 -dc {input.bz} > {output.bzless}"
+
