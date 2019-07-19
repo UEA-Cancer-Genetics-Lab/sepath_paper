@@ -1,0 +1,11 @@
+NCBI-TaxID	Kingdom	Phylum	Class	Order	Family	Genus	Species	Number_of_Reads	Relative_Abundance	Sub-Species	Filename
+32604	NA	NA	NA	Herpesvirales	Herpesviridae	Roseolovirus	Human betaherpesvirus 6B	10000	NA	NA	NC_000898.1.fna
+337042	NA	NA	NA	NA	Papillomaviridae	Alphapapillomavirus	Alphapapillomavirus 7	10000	NA	NA	NC_001357.1.fna
+129951	NA	NA	NA	NA	Adenoviridae	Mastadenovirus	Human mastadenovirus C	10000	NA	NA	NC_001405.1.fna
+333760	NA	NA	NA	NA	Papillomaviridae	Alphapapillomavirus	Alphapapillomavirus 9	10000	NA	NA	NC_001526.2.fna
+11676	NA	NA	NA	NA	Retroviridae	Lentivirus	Human immunodeficiency virus 1	10000	NA	NA	NC_001802.1.fna
+518987	NA	NA	NA	NA	Orthomyxoviridae	Betainfluenzavirus	Influenza B virus	10000	NA	NA	NC_002204.1.fna
+10407	NA	NA	NA	NA	Hepadnaviridae	Orthohepadnavirus	Hepatitis B virus	10000	NA	NA	NC_003977.1.fna
+10376	NA	NA	NA	Herpesvirales	Herpesviridae	Lymphocryptovirus	Human gammaherpesvirus 4	10000	NA	NA	NC_007605.1.fna
+687342	NA	NA	NA	NA	Anelloviridae	Alphatorquevirus	Torque teno virus 3	10000	NA	NA	NC_014081.1.fna
+166122	NA	NA	NA	NA	Retroviridae	NA	Human endogenous retrovirus K	10000	NA	NA	NC_022518.1.fna
